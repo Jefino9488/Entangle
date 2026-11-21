@@ -1,0 +1,4 @@
+[bindings.kotlin]
+package_name = "uniffi.entangle_android"
+cdylib_name = "entangle_android"
+android = true

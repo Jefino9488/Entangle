@@ -1,0 +1,23 @@
+[package]
+name = "entangle-android"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[lib]
+name = "entangle_android"
+crate-type = ["cdylib", "rlib"]
+
+[features]
+bindgen = ["uniffi/cli"]
+
+[dependencies]
+entangle-core = { path = "../entangle-core" }
+entangle-inference = { path = "../entangle-inference" }
+uniffi.workspace = true
+thiserror.workspace = true
+
+[[bin]]
+name = "uniffi-bindgen"
+path = "src/bin.rs"
+required-features = ["bindgen"]

@@ -1,0 +1,12 @@
+[env]
+# Keep host checks, binding generation and Android builds on the same CPU profile.
+# Native llama.cpp dependency builds otherwise vary with Cargo's debug/check mode.
+LLAMA_LIB_PROFILE = { value = "Release", force = false }
+CMAKE_BUILD_PARALLEL_LEVEL = { value = "4", force = false }
+GGML_OPENMP = { value = "OFF", force = false }
+GGML_AVX = { value = "OFF", force = false }
+GGML_AVX2 = { value = "OFF", force = false }
+GGML_AVX512 = { value = "OFF", force = false }
+GGML_FMA = { value = "OFF", force = false }
+GGML_F16C = { value = "OFF", force = false }
+GGML_BMI2 = { value = "OFF", force = false }
