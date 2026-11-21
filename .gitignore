@@ -1,0 +1,12 @@
+/Refrence/Ferrous/
+/android/.gradle/
+/android/.kotlin/
+**/build/
+/android/local.properties
+/android/app/src/main/jniLibs/
+/android/app/src/main/kotlin/uniffi/
+/rust/target/
+/artifacts/
+*.iml
+.idea/
+*.log
