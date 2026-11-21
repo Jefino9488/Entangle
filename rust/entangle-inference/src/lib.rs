@@ -441,6 +441,18 @@ mod tests {
     }
 
     #[test]
+    fn context_budget_preserves_an_excerpt_from_each_source() {
+        let evidence = format!(
+            "[1] First source\n{}\n\n[2] Second source\nConflicting source evidence.",
+            "long passage ".repeat(1000)
+        );
+        let compact = compact_evidence(&evidence, 8, 300);
+        assert_eq!(source_citations(&compact), vec!["[1]", "[2]"]);
+        assert!(compact.contains("Conflicting source evidence."));
+        assert!(compact.len() < 400);
+    }
+
+    #[test]
     #[ignore = "Requires a genuine model file set by ENTANGLE_TEST_MODEL; never downloads weights automatically"]
     fn real_local_model_generates_from_evidence() {
         let path = std::env::var("ENTANGLE_TEST_MODEL")
