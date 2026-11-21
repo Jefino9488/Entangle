@@ -99,7 +99,7 @@ data class ReferencePanelState(
 
 interface ReferenceRepository {
     suspend fun referencesFor(
-        concept: String,
+        conceptId: String,
         sourceDocumentId: String?,
     ): List<ContextualReference>
 }
@@ -112,9 +112,4 @@ interface DocumentRepository {
         pageIndex: Int,
         scrollOffset: Int,
     )
-}
-
-/** Future model adapters must own releaseable sessions, with no prescribed runtime or model. */
-interface LocalInferenceSession : AutoCloseable {
-    suspend fun cancel()
 }

@@ -11,6 +11,7 @@ import dev.entangle.app.domain.KnowledgeConcept
 import dev.entangle.app.domain.KnowledgeEdge
 import dev.entangle.app.domain.LibraryDocument
 import dev.entangle.app.domain.ReaderAnnotation
+import dev.entangle.app.domain.ReferenceRepository
 import dev.entangle.app.domain.SourceLocation
 import dev.entangle.app.domain.SourcePassage
 import kotlinx.coroutines.Dispatchers
@@ -29,7 +30,8 @@ import java.util.UUID
 /** All engine calls and file access run on IO. Rust exclusively owns library.sqlite. */
 class LocalLibraryRepository(
     private val context: Context,
-) : DocumentRepository {
+) : DocumentRepository,
+    ReferenceRepository {
     private val engine: Engine by lazy {
         val directory = File(context.noBackupFilesDir, "knowledge").apply { mkdirs() }
         Engine.open(File(directory, "library.sqlite").absolutePath)
@@ -149,12 +151,12 @@ class LocalLibraryRepository(
             engine.conceptsForPassage(id).map { KnowledgeConcept(it.id, it.label, it.mentionCount.toInt()) }
         }
 
-    suspend fun referencesFor(
+    override suspend fun referencesFor(
         conceptId: String,
-        sourceId: String?,
+        sourceDocumentId: String?,
     ): List<ContextualReference> =
         withContext(Dispatchers.IO) {
-            engine.referencesFor(conceptId, sourceId, 40u).map { reference ->
+            engine.referencesFor(conceptId, sourceDocumentId, 40u).map { reference ->
                 val passage = reference.passage
                 ContextualReference(
                     passage.id,

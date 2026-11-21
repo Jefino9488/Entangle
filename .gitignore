@@ -10,3 +10,9 @@
 *.iml
 .idea/
 *.log
+*.gguf
+*.safetensors
+*.tflite
+*.onnx
+__pycache__/
+*.pyc
