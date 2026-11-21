@@ -65,7 +65,7 @@ private enum class Destination(
 ) {
     Library("Library", Icons.Default.Home),
     Reader("Reader", Icons.Default.Search),
-    Knowledge("Knowledge", Icons.Default.Share),
+    Knowledge("Graph", Icons.Default.Share),
     Assistant("Assistant", Icons.Default.Info),
     Settings("Settings", Icons.Default.Settings),
 }

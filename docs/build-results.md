@@ -9,7 +9,7 @@ App ID `dev.entangle.app`, version 0.1.0, minimum SDK 26, compile/target SDK 36.
 - Build: `android/gradlew -p android assembleDebug` passed.
 - Local artifact: `artifacts/entangle-mvp-debug.apk`.
 - Size: 37,028,953 bytes, approximately 35.3 MiB.
-- SHA-256: `3dda2c194a35fdaed7ed725a9502392d24302f6048b7160251243e6121114ed9`.
+- SHA-256: `70731f147d7dc63f2a9f494e23dc0e979c3be6fd58cc2e1d4f8e8cb2b30dc0a9`.
 - APK v2 signature, ZIP alignment and all packaged native ELF LOAD segments passed 16 KiB alignment checks.
 - Installed on the Redmi K50i and API 35 x86_64 emulator. Model weights are separate private files, excluded from APK and Git.
 
